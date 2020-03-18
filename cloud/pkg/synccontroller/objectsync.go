@@ -206,12 +206,22 @@ func CompareResourceVersion(rva, rvb string) int {
 	a, err := strconv.ParseUint(rva, 10, 64)
 	if err != nil {
 		// coder error
-		panic(err)
+
+		//bug 注释
+		//panic(err)
+
+		klog.Warningf("parsing rva failed with: %s", err)
+		a = 0
 	}
 	b, err := strconv.ParseUint(rvb, 10, 64)
 	if err != nil {
 		// coder error
-		panic(err)
+
+		//bug 注释
+		//panic(err)
+
+		klog.Warningf("parsing rvb failed with: %s", err)
+		b = 0
 	}
 
 	if a > b {
